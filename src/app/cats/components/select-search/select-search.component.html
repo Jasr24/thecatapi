@@ -1,17 +1,14 @@
-<h3>Single selection</h3>
-<p>
-  <mat-form-field>
-    <mat-select [formControl]="catCtrl" placeholder="Cat" #singleSelect>
+  <mat-form-field class="col-5">
+    <mat-select [formControl]="ctrl" placeholder="Origin" #singleSelect>
       <mat-option>
-        <ngx-mat-select-search [formControl]="catFilterCtrl" noEntriesFoundLabel="No hay resultado"></ngx-mat-select-search>
+        <ngx-mat-select-search [formControl]="filterCtrl" noEntriesFoundLabel="No hay resultado"></ngx-mat-select-search>
       </mat-option>
 
-      <mat-option *ngFor="let cat of filteredCats | async" [value]="cat">
+      <mat-option *ngFor="let cat of filtered | async" [value]="cat">
         {{cat}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-</p>
 <p>
-  Selected Bank: {{catCtrl.value?.name}}
+  Selected Bank: {{ctrl.value?.name}}
 </p>

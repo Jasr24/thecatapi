@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IMiCat } from '../../interfaces/cat.interface';
+import { IFilterCats, IMiCat } from '../../interfaces/cat.interface';
 import { CatService } from '../../services/cat-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
@@ -12,6 +12,11 @@ export class ListadoGatosComponent implements OnInit {
   limitConsult='15';
 
   cats: IMiCat[] = [];
+
+  filter:IFilterCats = {
+    origin:"TODOS",
+    searchName:""
+  }
 
   constructor(private catService: CatService,
               private snack: MatSnackBar) { 
@@ -61,6 +66,12 @@ export class ListadoGatosComponent implements OnInit {
             panelClass: ['mat-toolbar', 'mat-primary'],
           });
         });
+ }
+
+ valueChange(data:IFilterCats){
+
+   console.log("El padre obtiene esto ",data);
+   this.filter = data;
  }
  
 }

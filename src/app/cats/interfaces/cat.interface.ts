@@ -19,6 +19,11 @@ export interface IMiCat {
     stranger_friendly?: number,
 }
 
+export interface IFilterCats {
+    origin: string,
+    searchName: string
+}
+
 
 export interface Cat {
     breeds:      Breed[];

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { ReplaySubject, Subject } from 'rxjs';
@@ -12,17 +12,23 @@ import { take, takeUntil } from 'rxjs/operators';
 })
 export class SelectSearchComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  /** list of cats */
-  protected cats: string[] = ["colombia",'venezuela', "peru","ecuador",'panama','brazil'];
+  list: string[] = [];
+  /** list*/
+  @Input("list")
+  set setList(list:string[]){
+    this.list = list;
+    this.filterBanks();
+  }
 
-  /** control for the selected cat */
-  public catCtrl: FormControl = new FormControl();
+  /** control for the selected*/
+  @Input("control")
+  public ctrl: FormControl = new FormControl();
 
   /** control for the MatSelect filter keyword */
-  public catFilterCtrl: FormControl = new FormControl();
+  public filterCtrl: FormControl = new FormControl();
 
-  /** list of banks filtered by search keyword */
-  public filteredCats: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
+  /** list of filtered by search keyword */
+  public filtered: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
 
   @ViewChild('singleSelect')
   singleSelect!: MatSelect;
@@ -36,14 +42,11 @@ export class SelectSearchComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
-    // set initial selection
-    this.catCtrl.setValue(this.cats[10]);
-
     // load the initial bank list
-    this.filteredCats.next(this.cats.slice());
+    this.filtered.next(this.list.slice());
 
     // listen for search field value changes
-    this.catFilterCtrl.valueChanges
+    this.filterCtrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
         this.filterBanks();
@@ -60,36 +63,36 @@ export class SelectSearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /**
-   * Sets the initial value after the filteredCats are loaded initially
+   * Sets the initial value after the filtered are loaded initially
    */
   protected setInitialValue() {
-    this.filteredCats
+    this.filtered
       .pipe(take(1), takeUntil(this._onDestroy))
       .subscribe(() => {
         // setting the compareWith property to a comparison function
         // triggers initializing the selection according to the initial value of
         // the form control (i.e. _initializeSelection())
-        // this needs to be done after the filteredCats are loaded initially
+        // this needs to be done after the filtered are loaded initially
         // and after the mat-option elements are available
         this.singleSelect.compareWith = (a: string, b: string) => a === b //=> a && b && a.id === b.id;
       });
   }
 
   protected filterBanks() {
-    if (!this.cats) {
+    if (!this.list) {
       return;
     }
     // get the search keyword
-    let search = this.catFilterCtrl.value;
+    let search = this.filterCtrl.value;
     if (!search) {
-      this.filteredCats.next(this.cats.slice());
+      this.filtered.next(this.list.slice());
       return;
     } else {
       search = search.toLowerCase();
     }
     // filter the banks
-    this.filteredCats.next(
-      this.cats.filter(cat => cat.toLowerCase().indexOf(search) > -1)
+    this.filtered.next(
+      this.list.filter(cat => cat.toLowerCase().indexOf(search) > -1)
     );
   }
 }

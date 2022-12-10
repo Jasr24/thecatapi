@@ -28,9 +28,10 @@
 </div>
 
 
-<!-- <app-filter-origin [cats]="cats"> </app-filter-origin> -->
+<p>Filtrar los gatos listados por: </p>
+<app-filter-origin [cats]="cats" (filterValueChange)="valueChange($event)" > </app-filter-origin>
 
-<app-select-search></app-select-search>
+
 
 
 
@@ -46,7 +47,7 @@
     </ng-template> -->
 
 <div class="row">
-    <div class="col" *ngFor="let cat of cats | origin:'United States'">
+    <div class="col" *ngFor="let cat of cats | origin:filter">
         <app-targeta-cat [cat]="cat" ></app-targeta-cat>
     </div>
 </div>
