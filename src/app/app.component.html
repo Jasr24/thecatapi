@@ -1,24 +1,19 @@
+<div class="container my-4">
+ <!-- <div   style="background-color: rgb(247, 246, 246); padding: 20px;"> -->
+    <div class="row">
 
+        <div class="col-3">
 
-<div class="row container my-4">
+            <h2>Filtros</h2>
+            <hr>
 
-    <div class="col-3">
+            <app-sidebar></app-sidebar>
 
-        <h2>Filtros</h2>
-        <hr>
+        </div>
 
-        <ul class="list-group">
-            <li class="list-group-item">Por nombre</li>
-            <li class="list-group-item">Por Origen</li>
-            <li class="list-group-item">Por categoria</li>
-        </ul>
+        <div class="col">
+            <router-outlet></router-outlet>
+        </div>
 
     </div>
-
-    <div class="col">
-        <h2>Por capital</h2>
-        <hr>
-        <router-outlet></router-outlet>
-    </div>
-
 </div>

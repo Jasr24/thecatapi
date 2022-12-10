@@ -1,0 +1,16 @@
+<mat-card [routerLink]="['/cat',cat.id]">
+    <mat-card-header>
+        <mat-card-title>{{cat.name}}</mat-card-title>
+        <mat-card-subtitle>Origin: {{cat.origin}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-image [src]="cat.imagen" alt="Imagen cat"> <!--Creemonos un pipe-->
+
+    <mat-card-content>
+        <p>
+            <strong>Life span:</strong> {{cat.life_span}}
+        </p>
+
+    </mat-card-content>
+
+</mat-card>
