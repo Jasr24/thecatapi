@@ -6,5 +6,6 @@ img{
 
 mat-card{
     margin-top: 20px;
-    cursor: pointer
+    cursor: pointer;
+    height: 100%;
 }

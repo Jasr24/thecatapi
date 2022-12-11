@@ -1,8 +1,11 @@
-mat-label{
+/* mat-label{
     color: darkmagenta;
 }
   
 ::ng-deep.mat-form-field-underline {
-  /*change color of underline*/
   background-color: darkmagenta !important;
+} */
+
+.app-card{
+  padding: 20px 10px;
 }

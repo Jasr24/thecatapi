@@ -21,7 +21,6 @@ export class FilterOriginComponent implements OnInit{
   filterValueChange = new EventEmitter<IFilterCats>();
 
   countries: string[] = [];
-  termino: string = ''; ////OJOJOJOJOJOJO
 
   constructor(private fb:FormBuilder) { 
     this.initForm();
@@ -65,6 +64,9 @@ export class FilterOriginComponent implements OnInit{
 
     if(countrySelected!=="All" && this.countries.findIndex( country=> country === countrySelected ) ==- 1){
       this.getControl('origin').setValue("All");
+    } else /*if (countrySelected!=="All")*/{
+      //this.getControl('origin').setValue("All");
+      this.getControl('searchName').setValue("");
     }
 
   }

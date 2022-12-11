@@ -1,0 +1,14 @@
+.pie-pagina{
+    margin: 10px 0 0 0;
+    padding: 30px 0;
+    font-size: 13px;
+    color: black;
+    text-align: center;
+    font-weight: bold; 
+    /*background: linear-gradient(#F3F5FC, #92a5e9);*/
+}
+
+.pgn{
+    width: 40px;
+    margin: 0 15px;
+}
