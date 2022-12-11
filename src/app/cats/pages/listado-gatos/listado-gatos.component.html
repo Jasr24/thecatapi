@@ -31,12 +31,6 @@
 <p>Filtrar los gatos listados por: </p>
 <app-filter-origin [cats]="cats" (filterValueChange)="valueChange($event)" > </app-filter-origin>
 
-
-
-
-
-
-
     <!-- <div *ngIf="!cats; else divCat"
     class="alert alert-info">
     Espere por favor...
@@ -47,7 +41,7 @@
     </ng-template> -->
 
 <div class="row">
-    <div class="col" *ngFor="let cat of cats | origin:filter">
+    <div class="col-4" *ngFor="let cat of cats | origin:filter">
         <app-targeta-cat [cat]="cat" ></app-targeta-cat>
     </div>
 </div>

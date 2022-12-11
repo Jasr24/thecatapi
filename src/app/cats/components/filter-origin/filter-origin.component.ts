@@ -33,7 +33,7 @@ export class FilterOriginComponent implements OnInit{
   private initForm(){
     this.form = this.fb.group(
       {
-        origin:["TODOS"],
+        origin:["All"],
         searchName:[""]
       }
     );
@@ -49,7 +49,7 @@ export class FilterOriginComponent implements OnInit{
   }
 
   private initCountries(cats:IMiCat[]){
-    this.countries = ["TODOS"];
+    this.countries = ["All"];
     
     let mySet: Set<string> = new Set<string>();
 
@@ -63,8 +63,8 @@ export class FilterOriginComponent implements OnInit{
     
     let countrySelected = this.getControl('origin').value;
 
-    if(countrySelected!=="TODOS" && this.countries.findIndex( country=> country === countrySelected ) ==- 1){
-      this.getControl('origin').setValue("TODOS");
+    if(countrySelected!=="All" && this.countries.findIndex( country=> country === countrySelected ) ==- 1){
+      this.getControl('origin').setValue("All");
     }
 
   }

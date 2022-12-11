@@ -25,6 +25,7 @@ import { ListadoGatosComponent } from './pages/listado-gatos/listado-gatos.compo
 import { TargetaCatComponent } from './components/targeta-cat/targeta-cat.component';
 import { FilterOriginComponent } from './components/filter-origin/filter-origin.component';
 import { SelectSearchComponent } from './components/select-search/select-search.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,7 +51,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PorNombreComponent, 
     PorCategoriaComponent, 
     VerGatoComponent,
-    ListadoGatosComponent
+    ListadoGatosComponent,
+    NgxSpinnerModule
   ],
   imports: [
     CommonModule,
@@ -69,7 +71,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgxMatSelectSearchModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ]
 })
 export class CatsModule { }

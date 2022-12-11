@@ -10,7 +10,7 @@ export class FilterOriginPipe implements PipeTransform {
 
     return entrada.filter(cat => {
 
-        if(value.origin === 'TODOS'){
+        if(value.origin === 'All'){
             if(value.searchName.trim() != ''){
                 return cat.name.toLowerCase().indexOf(value.searchName.trim().toLowerCase()) != -1;
             }
