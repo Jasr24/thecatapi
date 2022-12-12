@@ -27,11 +27,11 @@ export class ListadoGatosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(localStorage.getItem('cats')){
-      var limit = localStorage.getItem('limitConsult');
+    if(sessionStorage.getItem('cats')){
+      var limit = sessionStorage.getItem('limitConsult');
       this.limitConsult = JSON.parse(limit!);
 
-      var arrayCats = localStorage.getItem('cats');
+      var arrayCats = sessionStorage.getItem('cats');
       this.cats = JSON.parse(arrayCats!);
       return;
     }
@@ -41,7 +41,8 @@ export class ListadoGatosComponent implements OnInit {
     this.catService.getCats(this.limitConsult)
         .subscribe(resp => {
           this.cats = resp,
-          localStorage.setItem('cats', JSON.stringify(resp));
+          sessionStorage.setItem('cats', JSON.stringify(resp));
+          sessionStorage.setItem('limitConsult', this.limitConsult);
           this.spinner.hide();          
         },
         error => {
@@ -63,8 +64,8 @@ export class ListadoGatosComponent implements OnInit {
   this.catService.getCats(this.limitConsult.toString())
         .subscribe(resp => {
           this.cats = resp,
-          localStorage.setItem('cats', JSON.stringify(resp));
-          localStorage.setItem('limitConsult', this.limitConsult)
+          sessionStorage.setItem('cats', JSON.stringify(resp));
+          sessionStorage.setItem('limitConsult', this.limitConsult);
           this.spinner.hide();          
         },
         error => {
