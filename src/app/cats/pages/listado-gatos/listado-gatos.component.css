@@ -17,13 +17,13 @@
   color: darkmagenta;
 }
 
-.app-card{
-  padding: 20px 10px;
-}
-
 .boton{
   margin-top: 8px;
   margin-left: 5%;
   width: 90%;
   background-color: darkmagenta;
+}
+
+.app-card{
+  padding: 20px 10px;
 }
