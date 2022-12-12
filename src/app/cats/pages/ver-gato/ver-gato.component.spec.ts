@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VerGatoComponent } from './ver-gato.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('VerGatoComponent', () => {
   let component: VerGatoComponent;
@@ -8,7 +11,14 @@ describe('VerGatoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VerGatoComponent ]
+      declarations: [ 
+        VerGatoComponent 
+      ],
+      imports: [
+        HttpClientModule,
+        MatSnackBarModule,
+        RouterTestingModule
+      ]
     })
     .compileComponents();
   });

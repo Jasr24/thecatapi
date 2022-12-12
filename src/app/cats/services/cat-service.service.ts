@@ -41,15 +41,6 @@ export class CatService {
      );
    }
 
-   migato: IMiCat = {
-    id: '1',
-    name: 'Gato uno',
-    imagen: "https://cdn2.thecatapi.com/images/i4.jpg",
-    origin: 'string',
-    country_code: 'string',
-    life_span: 'string',
-  }
-
    //Obtener cat
    getCat(id: string): Observable<IMiCat>{
     const url = `${this.baseUrl}/images/${id}`;

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilterOriginComponent } from './filter-origin.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('FilterOriginComponent', () => {
   let component: FilterOriginComponent;
@@ -8,7 +9,12 @@ describe('FilterOriginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterOriginComponent ]
+      declarations: [ 
+        FilterOriginComponent 
+      ],
+      imports: [
+        ReactiveFormsModule
+      ]
     })
     .compileComponents();
   });

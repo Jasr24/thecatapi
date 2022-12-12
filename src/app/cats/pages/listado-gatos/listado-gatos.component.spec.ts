@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListadoGatosComponent } from './listado-gatos.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FilterOriginPipe } from '../../pipes/filter-origin.pipe';
 
 describe('ListadoGatosComponent', () => {
   let component: ListadoGatosComponent;
@@ -8,7 +11,14 @@ describe('ListadoGatosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListadoGatosComponent ]
+      declarations: [ 
+        ListadoGatosComponent,
+        FilterOriginPipe
+      ],
+      imports:[
+        HttpClientModule,
+        MatSnackBarModule
+      ]
     })
     .compileComponents();
   });

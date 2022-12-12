@@ -13,21 +13,21 @@ import { take, takeUntil } from 'rxjs/operators';
 export class SelectSearchComponent implements OnInit, AfterViewInit, OnDestroy {
 
   list: string[] = [];
-  /** list*/
+  // list
   @Input("list")
   set setList(list:string[]){
     this.list = list;
-    this.filterBanks();
+    this.filterCats();
   }
 
-  /** control for the selected*/
+  // control para el seleccionado
   @Input("control")
   public ctrl: FormControl = new FormControl();
 
-  /** control for the MatSelect filter keyword */
+  // control para la palabra clave del filtro MatSelect 
   public filterCtrl: FormControl = new FormControl();
 
-  /** list of filtered by search keyword */
+  // lista de filtrados por palabra clave de búsqueda 
   public filtered: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
 
   @ViewChild('singleSelect')
@@ -35,21 +35,21 @@ export class SelectSearchComponent implements OnInit, AfterViewInit, OnDestroy {
 
   
 
-  /** Subject that emits when the component has been destroyed. */
+  // Sujeto que emite cuando el componente ha sido destruido.
   protected _onDestroy = new Subject<void>();
 
 
   constructor() { }
 
   ngOnInit() {
-    // load the initial bank list
+    // cargar la lista inicial de los gatos
     this.filtered.next(this.list.slice());
 
-    // listen for search field value changes
+    // escuche los cambios en el valor del campo de búsqueda
     this.filterCtrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
-        this.filterBanks();
+        this.filterCats();
       });
   }
 
@@ -63,26 +63,21 @@ export class SelectSearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   /**
-   * Sets the initial value after the filtered are loaded initially
+   * Establece el valor inicial después de que los filtrados se carguen inicialmente
    */
   protected setInitialValue() {
     this.filtered
       .pipe(take(1), takeUntil(this._onDestroy))
       .subscribe(() => {
-        // setting the compareWith property to a comparison function
-        // triggers initializing the selection according to the initial value of
-        // the form control (i.e. _initializeSelection())
-        // this needs to be done after the filtered are loaded initially
-        // and after the mat-option elements are available
-        this.singleSelect.compareWith = (a: string, b: string) => a === b //=> a && b && a.id === b.id;
+        this.singleSelect.compareWith = (a: string, b: string) => a === b;
       });
   }
 
-  protected filterBanks() {
+  protected filterCats() {
     if (!this.list) {
       return;
     }
-    // get the search keyword
+    // obtener la palabra clave de búsqueda
     let search = this.filterCtrl.value;
     if (!search) {
       this.filtered.next(this.list.slice());
@@ -90,7 +85,7 @@ export class SelectSearchComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       search = search.toLowerCase();
     }
-    // filter the banks
+    // filtrar los gatos
     this.filtered.next(
       this.list.filter(cat => cat.toLowerCase().indexOf(search) > -1)
     );

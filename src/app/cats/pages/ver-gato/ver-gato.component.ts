@@ -22,9 +22,9 @@ export class VerGatoComponent implements OnInit {
   colorBackground: string = ''
 
   constructor(private catService: CatService,
-              private activatedRoute: ActivatedRoute,
               private snack:MatSnackBar,
               private router: Router,
+              private activatedRoute: ActivatedRoute,
               private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {

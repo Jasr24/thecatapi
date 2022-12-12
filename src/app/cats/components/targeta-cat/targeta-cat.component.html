@@ -1,4 +1,4 @@
-<mat-card [routerLink]="['/cat',cat.id]"  [ngStyle]="{'background-color': colorBackground}">
+<mat-card *ngIf="cat" [routerLink]="['/cat',cat.id]"  [ngStyle]="{'background-color': colorBackground}">
     <mat-card-header>
         <mat-card-title>{{cat.name}}</mat-card-title>
         <mat-card-subtitle>Origin: {{cat.origin}}</mat-card-subtitle>

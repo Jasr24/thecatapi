@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PorCategoriaComponent } from './por-categoria.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('PorCategoriaComponent', () => {
   let component: PorCategoriaComponent;
@@ -8,7 +10,13 @@ describe('PorCategoriaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PorCategoriaComponent ]
+      declarations: [ 
+        PorCategoriaComponent 
+      ],
+      imports: [
+        HttpClientModule,
+        MatSnackBarModule
+      ]
     })
     .compileComponents();
   });
