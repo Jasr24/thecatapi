@@ -1,0 +1,7 @@
+ mat-label{
+    color: darkmagenta;
+}
+  
+::ng-deep.mat-form-field-underline {
+  background-color: darkmagenta !important;
+} 

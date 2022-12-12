@@ -1,6 +1,11 @@
 <div class="container">
 
-    <mat-card *ngIf="cat">
+    <h1 class="titulo">Vista personlalizada</h1>
+    <mat-divider></mat-divider>
+
+    <mat-card *ngIf="cat"
+                [ngStyle]="{'background-color': colorBackground}"
+                class="mt-3">
 
         <mat-card-title-group>
             <mat-card-header class="col-6">
@@ -60,7 +65,6 @@
                 </div>
 
                 <div class="col">
-                    <!-- Devolcerse y que encuentre los mismos gatos -->
                     <button mat-raised-button
                             color="primary"
                             class="float-end"

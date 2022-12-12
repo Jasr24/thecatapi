@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: #f1f8e9;
+}
 mat-form-field{
     width: 100% !important;
 }
+
+.mat-toolbar {
+    background: #000000;
+    color: #ffffff;
+ }

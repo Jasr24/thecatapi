@@ -1,22 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component';
-
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
   declarations: [  
-    SidebarComponent, FooterComponent
+    FooterComponent, 
+    MenuComponent
   ],
   exports:[
-    SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatMenuModule,
+    MatIconModule
   ]
 })
 export class SharedModule { }

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Cat, IMiCat } from '../interfaces/cat.interface';
+import { Cat, Category, imagenCat, IMiCat } from '../interfaces/cat.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -27,19 +27,6 @@ export class CatService {
      .pipe(
       map( (res:Cat[])=>{
 
-        /* var list:IMiCat[] = [];
-        res.forEach((gato) => {
-          var cat: IMiCat = {
-            id: gato.id,
-            name: gato.breeds[0].name,
-            imagen: gato.url,
-            origin: gato.breeds[0].origin,
-            country_code: gato.breeds[0].country_code,
-            life_span: gato.breeds[0].life_span
-          }
-          list.push(cat);
-        });  
-        */    
         return res.map(gato=>{
           return  {
             id: gato.id,
@@ -63,7 +50,7 @@ export class CatService {
     life_span: 'string',
   }
 
-   //Cat  FALTA TERMINARLO
+   //Obtener cat
    getCat(id: string): Observable<IMiCat>{
     const url = `${this.baseUrl}/images/${id}`;
     let params = new HttpParams().set("has_breeds","1");
@@ -94,4 +81,34 @@ export class CatService {
         })
       )
    }
+
+   //Listar las categorias 
+   getCategoriesCats(): Observable<Category[]>{
+    const url = `${this.baseUrl}/categories`;
+    return this.http.get<Category[]>(url, {headers: this.headers});
+  }
+
+  //Listar imagenes por categoria
+  getImagenesCategoris(id: number): Observable<imagenCat[]>{
+    const url = `${this.baseUrl}/images/search`;
+    let params = new HttpParams().set("limit","12").set("category_ids",id.toString());
+
+    return this.http.get<any>(url, {headers: this.headers, params:params})
+     .pipe(
+      map( (res:Cat[])=>{
+
+        return res.map(cat=>{
+          return  {
+            imagen: cat.url,
+          }
+        });
+      })
+     );
+  }
+
+  //Seleccionar color random
+  backgroundRandom(backgroundColors: string[]): string{
+    let ramdon = Math.round((Math.random()*(backgroundColors.length-1)));
+    return backgroundColors[ramdon]
+  }
 }

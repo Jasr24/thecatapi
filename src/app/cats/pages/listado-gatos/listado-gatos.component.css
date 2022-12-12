@@ -1,11 +1,29 @@
-/* mat-label{
+ mat-label{
     color: darkmagenta;
 }
   
 ::ng-deep.mat-form-field-underline {
   background-color: darkmagenta !important;
-} */
+} 
+
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: darkmagenta !important;;
+ }
+
+.titulo{
+  text-align: center;
+  font-size: 30px;
+  color: darkmagenta;
+}
 
 .app-card{
   padding: 20px 10px;
+}
+
+.boton{
+  margin-top: 8px;
+  margin-left: 5%;
+  width: 90%;
+  background-color: darkmagenta;
 }

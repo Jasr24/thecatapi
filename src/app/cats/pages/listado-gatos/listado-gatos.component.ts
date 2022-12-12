@@ -73,8 +73,6 @@ export class ListadoGatosComponent implements OnInit {
  }
 
  valueChange(data:IFilterCats){
-
-   console.log("El padre obtiene esto ",data);
    this.filter = data;
  }
 
@@ -82,8 +80,7 @@ export class ListadoGatosComponent implements OnInit {
     this.spinner.hide();          
     this.snack.open(mesage, opcion,{
     duration:2000,
-    //Cambiar color
-    // panelClass: ['mat-toolbar', 'mat-primary'],
+    panelClass: ['mat-toolbar'],
   });
  }
  

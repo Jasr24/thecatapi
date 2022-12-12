@@ -1,24 +1,23 @@
-<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#c709e8" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#c709e8" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
 
-<div class="container my-4">
- <!-- <div   style="background-color: rgb(247, 246, 246); padding: 20px;"> -->
+<div class="container my-2">
+        
     <div class="row">
 
-        <div class="col-3 height">
-
-            <h2>Filtros</h2>
-            <hr>
-
-            <app-sidebar></app-sidebar>
+        <div class="col-1">
+            <app-menu></app-menu>
 
         </div>
 
-        <div class="col">
+        <div class="col hijos">
             <router-outlet></router-outlet>
         </div>
 
     </div>
-    <footer>
-        <app-footer></app-footer>
-    </footer>
 </div>
+
+<footer class="pie-pagina mt-3">
+    <app-footer></app-footer>
+</footer>

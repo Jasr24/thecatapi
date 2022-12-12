@@ -1,0 +1,19 @@
+<button mat-icon-button [matMenuTriggerFor]="menu"
+        class="menu">
+    <mat-icon>pets</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item
+            routerLink=""
+            [routerLinkActiveOptions]="{exact: true}"
+            routerLinkActive="active-link">
+        <mat-icon>list</mat-icon>
+        <span>Listado</span>
+    </button>
+    <button mat-menu-item
+            routerLink="/categoria"
+            routerLinkActive="active-link">
+        <mat-icon>favorite</mat-icon>
+        <span>Categorias</span>
+    </button>
+</mat-menu>

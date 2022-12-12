@@ -11,14 +11,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 //pipes
 import { FilterOriginPipe } from './pipes/filter-origin.pipe';
 
 
-import { PorOrigenComponent } from './pages/por-origen/por-origen.component';
-import { PorNombreComponent } from './pages/por-nombre/por-nombre.component';
 import { PorCategoriaComponent } from './pages/por-categoria/por-categoria.component';
 import { VerGatoComponent } from './pages/ver-gato/ver-gato.component';
 import { ListadoGatosComponent } from './pages/listado-gatos/listado-gatos.component';
@@ -36,8 +35,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ 
-    PorOrigenComponent,     
-    PorNombreComponent, 
     PorCategoriaComponent, 
     VerGatoComponent, 
     ListadoGatosComponent, 
@@ -47,8 +44,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     SelectSearchComponent
   ],
   exports:[
-    PorOrigenComponent,     
-    PorNombreComponent, 
     PorCategoriaComponent, 
     VerGatoComponent,
     ListadoGatosComponent,
@@ -72,7 +67,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatDividerModule
   ]
 })
 export class CatsModule { }

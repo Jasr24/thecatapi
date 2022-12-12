@@ -1,0 +1,26 @@
+.menu {
+    margin-top: 30px;
+    border-radius: 10px;
+    transform: scale(1.2);
+    background-color: #f1f8e9;
+    border-color:  #f5a1ef;
+    color: #a836a0;
+    margin: 30px auto auto;
+}
+
+@media only screen and (min-width: 485px) and (max-width: 770px) {
+    .menu{
+        transform: scale(1.5);
+    }
+}
+
+@media only screen and (min-width: 770px) {
+    .menu{
+        transform: scale(1.8);
+    }
+}
+
+.active-link {
+    color: #121111;
+    background-color: #f48fb1;
+} 

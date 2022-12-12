@@ -1,1 +1,35 @@
-<p>por-categoria works!</p>
+
+<div class="container" *ngIf="categories.length > 0">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-3" *ngFor="let category of categories">
+            <button mat-raised-button 
+                color="primary"
+                class="button"
+                [ngStyle]="{'background-color': nombreCategory == category.name ? '#e91e63' : '#f48fb1'}"
+                (click)="listarImagenes(category.id, category.name)">
+                    {{category.name}}
+            </button>            
+        </div>
+    </div>
+    
+    <mat-divider class="mt-3"></mat-divider>
+
+    <br>
+
+    <ng-container *ngIf="imganesCats.length > 0; else elseTemplate">
+        <div class="container">
+            <div class="container-image">
+                <mat-card *ngFor="let imagen of imganesCats; let i = index"  class="box" [ngStyle]="{'background-color': backgroundColors[i%6]}">
+                    <img mat-card-image [src]="imagen" alt="Imagen gato">
+                </mat-card>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #elseTemplate>
+        <mat-card>
+            <h1 class="else-categoria">Selecciona alguna categoria</h1>
+        </mat-card>
+    </ng-template>  
+
+</div>
