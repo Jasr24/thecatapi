@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CatService } from '../../services/cat-service.service';
-import { Category } from '../../interfaces/cat.interface';
+import { ICategory } from '../../interfaces/cat.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class PorCategoriaComponent implements OnInit {
 
-  categories: Category[] = [];
+  categories: ICategory[] = [];
   imganesCats: string[] = [];
   nombreCategory: string = '';
 
@@ -44,8 +44,7 @@ export class PorCategoriaComponent implements OnInit {
           this.spinner.hide(); 
           this.snack.open("Lo sentimos ha ocurrido un error inesperado", 'Intentalo de nuevo mas tarde...',{
             duration:2000,
-            //Cambiar color
-            // panelClass: ['mat-toolbar', 'mat-primary'],
+            panelClass: ['mat-toolbar'],
           });
           console.log(error);
         })
@@ -53,15 +52,12 @@ export class PorCategoriaComponent implements OnInit {
 
   listarImagenes(idCategoria: number, nombreCategory: string){
     this.spinner.show();
-    this.imganesCats = [];
     this.nombreCategory = nombreCategory;
 
     this.catService.getImagenesCategoris(idCategoria)
-      .subscribe(resp => {
-        resp.map(catImage => {
-          this.imganesCats.push(catImage.imagen);
-          this.spinner.hide();  
-        })
+      .subscribe(listCats => {
+        this.imganesCats = listCats.map(catImage=>catImage.imagen);
+        this.spinner.hide();  
       })
   }
 

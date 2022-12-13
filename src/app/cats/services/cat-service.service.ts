@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Cat, Category, imagenCat, IMiCat } from '../interfaces/cat.interface';
+import { Cat, ICategory, IImagenCat, IMiCat } from '../interfaces/cat.interface';
+import { CatRemoteService } from './remote/cat-remote.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +16,11 @@ export class CatService {
     'x-api-key': environment.claveApi
   });
 
-  constructor(private http: HttpClient) { }
+  constructor(private catRemote:CatRemoteService) { }
 
   //Listar cats
    getCats(size: string) : Observable<IMiCat[]>{
-
-    let url = `${this.baseUrl}/images/search`;
-    let params = new HttpParams().set("limit",size).set("has_breeds","1");
-
-    return this.http.get<any>(url, {headers: this.headers, params:params})
+    return this.catRemote.getCats(size)
      .pipe(
       map( (res:Cat[])=>{
 
@@ -42,10 +39,9 @@ export class CatService {
    }
 
    //Obtener cat
-   getCat(id: string): Observable<IMiCat>{
-    const url = `${this.baseUrl}/images/${id}`;
-    let params = new HttpParams().set("has_breeds","1");
-    return this.http.get<Cat>(url, {headers: this.headers, params:params})
+   getCatById(id: string): Observable<IMiCat>{
+ 
+    return this.catRemote.getCatById(id)
       .pipe(
         map( (res: Cat ) => {
              let gato: IMiCat = {
@@ -74,17 +70,14 @@ export class CatService {
    }
 
    //Listar las categorias 
-   getCategoriesCats(): Observable<Category[]>{
-    const url = `${this.baseUrl}/categories`;
-    return this.http.get<Category[]>(url, {headers: this.headers});
+   getCategoriesCats(): Observable<ICategory[]>{
+    return this.catRemote.getCategoriesCats();
   }
 
   //Listar imagenes por categoria
-  getImagenesCategoris(id: number): Observable<imagenCat[]>{
-    const url = `${this.baseUrl}/images/search`;
-    let params = new HttpParams().set("limit","12").set("category_ids",id.toString());
+  getImagenesCategoris(id: number): Observable<IImagenCat[]>{
 
-    return this.http.get<any>(url, {headers: this.headers, params:params})
+    return this.catRemote.getImagenesCategoris(id)
      .pipe(
       map( (res:Cat[])=>{
 

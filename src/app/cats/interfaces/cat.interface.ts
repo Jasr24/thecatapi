@@ -27,7 +27,7 @@ export interface IFilterCats {
 
 export interface Cat {
     breeds:      Breed[];
-    categories?: Category[];
+    categories?: ICategory[];
     id:          string;
     url:         string;
     width:       number;
@@ -79,11 +79,11 @@ export interface Weight {
     metric:   string;
 }
 
-export interface Category {
+export interface ICategory {
     id:   number;
     name: string;
 }
 
-export interface imagenCat {
+export interface IImagenCat {
     imagen: string
 }

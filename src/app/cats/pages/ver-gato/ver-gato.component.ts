@@ -32,7 +32,7 @@ export class VerGatoComponent implements OnInit {
     this.colorBackground = this.catService.backgroundRandom(this.backgroundColors);
     this.activatedRoute.params
       .pipe(
-        switchMap( ({id}) => this.catService.getCat(id)),
+        switchMap( ({id}) => this.catService.getCatById(id)),
       )
       .subscribe( cat => {
         this.spinner.hide(); 

@@ -30,4 +30,11 @@ describe('PorCategoriaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should function listarImagenes', () => {
+ 
+    component.listarImagenes(1,"nombre");
+
+    expect( component.listarImagenes).toBeDefined();
+  });
 });
