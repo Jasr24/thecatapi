@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PorCategoriaComponent } from './por-categoria.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
+import { CatsModule } from '../../cats.module';
 
 describe('PorCategoriaComponent', () => {
   let component: PorCategoriaComponent;
@@ -15,7 +17,8 @@ describe('PorCategoriaComponent', () => {
       ],
       imports: [
         HttpClientModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        CatsModule
       ]
     })
     .compileComponents();
@@ -37,4 +40,31 @@ describe('PorCategoriaComponent', () => {
 
     expect( component.listarImagenes).toBeDefined();
   });
+
+  it("should serviceCategoriesCats", () => {
+    component.serviceCategoriesCats();
+    expect(component.serviceCategoriesCats).toBeDefined();
+  })
+  
+  it("should serviceCategoriesCats with service error", () => {
+
+    spyOn(component["catService"], "getCategoriesCats")
+      .and.returnValue(
+        new Observable(obs => {
+          obs.error()
+        })
+      );
+    component.serviceCategoriesCats();
+    expect(component.serviceCategoriesCats).toBeDefined();
+  })
+
+  it("should listarImagenes", () => {
+    component.listarImagenes(1,'space');
+    expect(component.listarImagenes).toBeDefined();
+  })
+
+  // it("should listarImagenes", () => {
+  //   component.listarImagenes(1,'space');
+  //   expect(component.listarImagenes).toBeDefined();
+  // })
 });

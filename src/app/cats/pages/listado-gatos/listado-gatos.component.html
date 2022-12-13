@@ -31,7 +31,7 @@
 <app-filter-origin [cats]="cats" (filterValueChange)="valueChange($event)" > </app-filter-origin>
 
 <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 col-xl-3 app-card" *ngFor="let cat of cats | origin:filter">
+    <div class="col-12 col-sm-6 col-md-4 col-xl-3 app-card" *ngFor="let cat of cats | filterCatPipe:filter">
         <app-targeta-cat [cat]="cat" ></app-targeta-cat>
     </div>
 </div>

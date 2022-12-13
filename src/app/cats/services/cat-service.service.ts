@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Cat, ICategory, IImagenCat, IMiCat } from '../interfaces/cat.interface';
@@ -11,11 +9,6 @@ import { CatRemoteService } from './remote/cat-remote.service';
 })
 export class CatService {
 
-  private baseUrl: string = environment.baseUrl;
-  private headers = new HttpHeaders({
-    'x-api-key': environment.claveApi
-  });
-
   constructor(private catRemote:CatRemoteService) { }
 
   //Listar cats
@@ -23,8 +16,7 @@ export class CatService {
     return this.catRemote.getCats(size)
      .pipe(
       map( (res:Cat[])=>{
-
-        return res.map(gato=>{
+        return res.map(gato=>{ 
           return  {
             id: gato.id,
             name: gato.breeds[0].name,
@@ -75,9 +67,9 @@ export class CatService {
   }
 
   //Listar imagenes por categoria
-  getImagenesCategoris(id: number): Observable<IImagenCat[]>{
+  getCategoryImages(id: number): Observable<IImagenCat[]>{
 
-    return this.catRemote.getImagenesCategoris(id)
+    return this.catRemote.getCategoryImages(id)
      .pipe(
       map( (res:Cat[])=>{
 

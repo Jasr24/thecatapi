@@ -30,6 +30,10 @@ export class VerGatoComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.colorBackground = this.catService.backgroundRandom(this.backgroundColors);
+    this.initGato();
+  }
+
+  initGato(){
     this.activatedRoute.params
       .pipe(
         switchMap( ({id}) => this.catService.getCatById(id)),
@@ -45,7 +49,6 @@ export class VerGatoComponent implements OnInit {
           panelClass: ['mat-toolbar'],
         });
         this.router.navigate([''])
-        console.log(error);
       })
   }
 }

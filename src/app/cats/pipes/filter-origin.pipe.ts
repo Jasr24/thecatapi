@@ -2,14 +2,13 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { IFilterCats, IMiCat } from '../interfaces/cat.interface';
 
 @Pipe({
-    name: 'origin'
+    name: 'filterCatPipe'
 })
 export class FilterOriginPipe implements PipeTransform {
 
   transform(entrada: IMiCat[], value: IFilterCats): IMiCat[] {
 
     return entrada.filter(cat => {
-
         if(value.origin === 'All'){
             if(value.searchName.trim() != ''){
                 return cat.name.toLowerCase().indexOf(value.searchName.trim().toLowerCase()) != -1;

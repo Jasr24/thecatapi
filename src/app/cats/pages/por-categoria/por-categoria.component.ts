@@ -31,6 +31,22 @@ export class PorCategoriaComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.serviceCategoriesCats();
+    
+  }
+
+  listarImagenes(idCategoria: number, nombreCategory: string){
+    this.spinner.show();
+    this.nombreCategory = nombreCategory;
+
+    this.catService.getCategoryImages(idCategoria)
+      .subscribe(listCats => {
+        this.imganesCats = listCats.map(catImage=>catImage.imagen);
+        this.spinner.hide();  
+      })
+  }
+
+  serviceCategoriesCats(){
     this.spinner.show();
 
     this.catService.getCategoriesCats()
@@ -46,19 +62,7 @@ export class PorCategoriaComponent implements OnInit {
             duration:2000,
             panelClass: ['mat-toolbar'],
           });
-          console.log(error);
         })
-  }
-
-  listarImagenes(idCategoria: number, nombreCategory: string){
-    this.spinner.show();
-    this.nombreCategory = nombreCategory;
-
-    this.catService.getImagenesCategoris(idCategoria)
-      .subscribe(listCats => {
-        this.imganesCats = listCats.map(catImage=>catImage.imagen);
-        this.spinner.hide();  
-      })
   }
 
 }

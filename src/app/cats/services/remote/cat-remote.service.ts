@@ -17,26 +17,32 @@ export class CatRemoteService {
   constructor(private http: HttpClient) { }
 
   getCats(size: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/images/search`, 
-    { headers: this.headers, params: new HttpParams().set("limit", size).set("has_breeds", "1") });
+    return this.http.get<any>(`${this.baseUrl}/images/search`,
+      {
+        headers: this.headers,
+        params: new HttpParams().set("limit", size).set("has_breeds", "1")
+      });
   }
 
   getCatById(id: string): Observable<any> {
-    const url = `${this.baseUrl}/images/${id}`;
-    let params = new HttpParams().set("has_breeds","1");
-    return this.http.get<Cat>(url, {headers: this.headers, params:params})
+    return this.http.get<Cat>(`${this.baseUrl}/images/${id}`,
+      {
+        headers: this.headers,
+        params: new HttpParams().set("has_breeds", "1")
+      })
   }
 
-  getCategoriesCats(): Observable<ICategory[]>{
-    const url = `${this.baseUrl}/categories`;
-    return this.http.get<ICategory[]>(url, {headers: this.headers});
+  getCategoriesCats(): Observable<ICategory[]> {
+    return this.http.get<ICategory[]>(`${this.baseUrl}/categories`,
+      { headers: this.headers });
   }
 
-  getImagenesCategoris(id: number): Observable<any[]>{
-    const url = `${this.baseUrl}/images/search`;
-    let params = new HttpParams().set("limit","12").set("category_ids",id.toString());
-
-    return this.http.get<any>(url, {headers: this.headers, params:params})
+  getCategoryImages(id: number): Observable<any[]> {
+    return this.http.get<any>(`${this.baseUrl}/images/search`,
+      {
+        headers: this.headers,
+        params: new HttpParams().set("limit", "12").set("category_ids", id.toString())
+      })
   }
 
 }

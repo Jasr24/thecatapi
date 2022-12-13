@@ -36,41 +36,19 @@ export class ListadoGatosComponent implements OnInit {
       return;
     }
 
-    this.spinner.show();
-
-    this.catService.getCats(this.limitConsult)
-        .subscribe(resp => {
-          this.cats = resp,
-          sessionStorage.setItem('cats', JSON.stringify(resp));
-          sessionStorage.setItem('limitConsult', this.limitConsult);
-          this.spinner.hide();          
-        },
-        error => {
-            this.errors('Lo sentimios ha ocurrido un error inesperado', 'Intentalo de nuevo mas tarde...');     
-        });   
+    this.serviceGetCats();
    
  }
 
  consultar(){
 
-  const size = Number.parseInt(this.limitConsult)
+  const size = Number.parseInt(this.limitConsult);
 
   if(isNaN(size) || size < 1 || size > 100){
     this.errors('Lo sentimios la consulta debe ser realizada entre 1 y 100', 'Intentalo de nuevo...');
     return
   }
-  this.spinner.show();
-
-  this.catService.getCats(this.limitConsult.toString())
-        .subscribe(resp => {
-          this.cats = resp,
-          sessionStorage.setItem('cats', JSON.stringify(resp));
-          sessionStorage.setItem('limitConsult', this.limitConsult);
-          this.spinner.hide();          
-        },
-        error => {
-          this.errors('Lo sentimios ha ocurrido un error inesperado', 'Intentalo de nuevo mas tarde...');
-        });
+  this.serviceGetCats();
  }
 
  valueChange(data:IFilterCats){
@@ -83,6 +61,21 @@ export class ListadoGatosComponent implements OnInit {
     duration:2000,
     panelClass: ['mat-toolbar'],
   });
+ }
+
+ serviceGetCats(){
+  this.spinner.show();
+
+    this.catService.getCats(this.limitConsult)
+        .subscribe(resp => {
+          this.cats = resp,
+          sessionStorage.setItem('cats', JSON.stringify(resp));
+          sessionStorage.setItem('limitConsult', this.limitConsult);
+          this.spinner.hide();          
+        },
+        error => {
+            this.errors('Lo sentimios ha ocurrido un error inesperado', 'Intentalo de nuevo mas tarde...');     
+        });   
  }
  
 }
