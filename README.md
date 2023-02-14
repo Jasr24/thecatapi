@@ -1,13 +1,3 @@
-Descripcion:
-Este proyecto se realizo con la api: https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t ,  el cual fue realizado con 
-angular, sus unit tests se encuentran desarrollados.
-
-Autor: José Andres Saavedra Romero
-
-Ejemplo en vivo: https://jasr24.github.io/thecatapi/
-
-Instalacion: para la instalacion de sus dependencia, abrir consola y realizar el npm i
-
 # Thecatapi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.19.
